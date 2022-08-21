@@ -6,6 +6,6 @@ final class Resin_Exposure_Dialin_SettingsTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(Resin_Exposure_Dialin_Settings().text, "Hello, World!")
+//        XCTAssertEqual(Resin_Exposure_Dialin_Settings().text, "Hello, World!")
     }
 }
