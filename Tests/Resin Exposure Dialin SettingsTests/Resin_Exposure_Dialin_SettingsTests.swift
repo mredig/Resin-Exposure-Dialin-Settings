@@ -15,8 +15,8 @@ final class Resin_Exposure_Dialin_SettingsTests: XCTestCase {
 			0x00,
 		])
 
-		let little = try data.uInt32(endianness: .little)
-		let big = try data.uInt32(endianness: .big)
+		let little = try data.integerValue(of: UInt32.self, endianness: .little)
+		let big = try data.integerValue(of: UInt32.self, endianness: .big)
 
 		XCTAssertEqual(28, little)
 		XCTAssertEqual(469762048, big)
