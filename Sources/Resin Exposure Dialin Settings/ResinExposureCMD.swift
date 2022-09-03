@@ -59,42 +59,45 @@ struct ResinExposure: ParsableCommand {
 	func run() throws {
 		let inputData = try Data(contentsOf: inputPath)
 
+		let svg = SVGXParsing(data: inputData)
 
-		let config = try ResinExposureDialinSetting(title: resinName, data: inputData)
+		print(try svg.getSVGData())
 
-		print("Loading \(inputPath.lastPathComponent) and naming it '\(config.title)' - iterating \(iterations) times between \(testRange.lowerBound) and \(testRange.upperBound) for \(mode)")
-
-		let outputDirectory = outputPath.appendingPathComponent(config.title)
-		try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
-
-		func export(mode: Mode, timeValue: TimeInterval) throws {
-			var newConfig = config
-
-			guard let titleTime = Self.numberFormatter.string(from: timeValue as NSNumber) else { return }
-
-			switch mode {
-			case .adhesion:
-				newConfig.bottomLayerExposureTime = timeValue
-				newConfig.title.append(" - \(titleTime)s bottom exposure")
-			case .baseLayerTime:
-				newConfig.baseLayerTime = timeValue
-				newConfig.title.append(" - \(titleTime)s normal exposure")
-			}
-
-			let outputFile = outputDirectory
-				.appendingPathComponent(newConfig.title)
-				.appendingPathExtension("cfg")
-
-			try newConfig.generateConfigFile().write(to: outputFile, atomically: true, encoding: .utf8)
-		}
-
-		for timeValue in stride(from: testRange.lowerBound, through: testRange.upperBound, by: ((testRange.upperBound - (testRange.lowerBound)) / TimeInterval(iterations - 1))) {
-			try export(mode: mode, timeValue: timeValue)
-		}
-
-		if let recommendedTime {
-			try export(mode: mode, timeValue: recommendedTime)
-		}
+//		let config = try ResinExposureDialinSetting(title: resinName, data: inputData)
+//
+//		print("Loading \(inputPath.lastPathComponent) and naming it '\(config.title)' - iterating \(iterations) times between \(testRange.lowerBound) and \(testRange.upperBound) for \(mode)")
+//
+//		let outputDirectory = outputPath.appendingPathComponent(config.title)
+//		try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
+//
+//		func export(mode: Mode, timeValue: TimeInterval) throws {
+//			var newConfig = config
+//
+//			guard let titleTime = Self.numberFormatter.string(from: timeValue as NSNumber) else { return }
+//
+//			switch mode {
+//			case .adhesion:
+//				newConfig.bottomLayerExposureTime = timeValue
+//				newConfig.title.append(" - \(titleTime)s bottom exposure")
+//			case .baseLayerTime:
+//				newConfig.baseLayerTime = timeValue
+//				newConfig.title.append(" - \(titleTime)s normal exposure")
+//			}
+//
+//			let outputFile = outputDirectory
+//				.appendingPathComponent(newConfig.title)
+//				.appendingPathExtension("cfg")
+//
+//			try newConfig.generateConfigFile().write(to: outputFile, atomically: true, encoding: .utf8)
+//		}
+//
+//		for timeValue in stride(from: testRange.lowerBound, through: testRange.upperBound, by: ((testRange.upperBound - (testRange.lowerBound)) / TimeInterval(iterations - 1))) {
+//			try export(mode: mode, timeValue: timeValue)
+//		}
+//
+//		if let recommendedTime {
+//			try export(mode: mode, timeValue: recommendedTime)
+//		}
 	}
 }
 
