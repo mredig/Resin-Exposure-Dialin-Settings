@@ -59,9 +59,18 @@ struct ResinExposure: ParsableCommand {
 	func run() throws {
 		let inputData = try Data(contentsOf: inputPath)
 
-		let svg = SVGXParsing(data: inputData)
+		let svg = try SVGXParsing(data: inputData)
 
-		print(try svg.getSVGData())
+//		print(try svg.getSVGData())
+//		let xml = try XMLDocument(data: svgData)
+//
+//		guard
+//			let svgInfo = try xml.nodes(forXPath: "/svg[1]/printparams[1]").first as? XMLElement
+//		else { throw SimpleError(message: "Unable to parse SVGX file") }
+//
+//		print(svgInfo)
+
+		print(svg)
 
 //		let config = try ResinExposureDialinSetting(title: resinName, data: inputData)
 //
