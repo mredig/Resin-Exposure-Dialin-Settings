@@ -27,6 +27,9 @@ struct ResinExposure: ParsableCommand {
 	@Option(name: .customShort("r"), help: "Range for tests (e.g. 2.0...4.0)")
 	var testRange: ClosedRange<TimeInterval>
 
+	@Option(name: .shortAndLong, help: "Attachment time factor")
+	var attachmentTimeFactor: Double = 10
+
 	@Option(name: .long, help: "Recommended time from manufacturer")
 	var recommendedTime: TimeInterval?
 
@@ -44,13 +47,13 @@ struct ResinExposure: ParsableCommand {
 		let outputDirectory = outputPath.appendingPathComponent(outputName)
 		try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
 
-		let adhesionFactor: Double = 10
-
 		func export(timeValue: TimeInterval) throws {
 			guard let titleTime = Self.numberFormatter.string(from: timeValue as NSNumber) else { return }
 
-			svg.attachTime?.stringValue = "\(timeValue * adhesionFactor)"
+			svg.attachTime?.stringValue = "\(timeValue * attachmentTimeFactor)"
 			svg.baseTime?.stringValue = titleTime
+
+			print("Creating variation with \(titleTime)s layer time and \(timeValue * attachmentTimeFactor)s attachment layers time.")
 
 			let outputFile = outputDirectory
 				.appendingPathComponent("\(outputName)-\(titleTime)s")
