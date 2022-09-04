@@ -13,171 +13,87 @@ public struct SVGXParsing {
 
 	static private let materialname = "materialname"
 	public var materialName: XMLNode? {
-		get { params.attribute(forName: Self.materialname) }
-		set {
-			params.removeAttribute(forName: Self.materialname)
-			newValue?.name = Self.materialname
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.materialname, on: \.params) }
+		set { setNode(node: newValue, for: Self.materialname, on: \.params) }
 	}
 
 	static private let layerheight = "layerheight"
 	public var layerHeight: XMLNode? {
-		get { params.attribute(forName: Self.layerheight) }
-		set {
-			params.removeAttribute(forName: Self.layerheight)
-			newValue?.name = Self.layerheight
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.layerheight, on: \.params) }
+		set { setNode(node: newValue, for: Self.layerheight, on: \.params) }
 	}
 
 	static private let lightintensity = "lightintensity"
 	public var lightIntensity: XMLNode? {
-		get { params.attribute(forName: Self.lightintensity) }
-		set {
-			params.removeAttribute(forName: Self.lightintensity)
-			newValue?.name = Self.lightintensity
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.lightintensity, on: \.params) }
+		set { setNode(node: newValue, for: Self.lightintensity, on: \.params) }
 	}
 
 	static private let resolutionx = "resolutionx"
 	public var resolutionX: XMLNode? {
-		get { params.attribute(forName: Self.resolutionx) }
-		set {
-			params.removeAttribute(forName: Self.resolutionx)
-			newValue?.name = Self.resolutionx
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.resolutionx, on: \.params) }
+		set { setNode(node: newValue, for: Self.resolutionx, on: \.params) }
 	}
-
 
 	static private let resolutiony = "resolutiony"
 	public var resolutionY: XMLNode? {
-		get { params.attribute(forName: Self.resolutiony) }
-		set {
-			params.removeAttribute(forName: Self.resolutiony)
-			newValue?.name = Self.resolutiony
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.resolutiony, on: \.params) }
+		set { setNode(node: newValue, for: Self.resolutiony, on: \.params) }
 	}
 
 	static private let displaywidth = "displaywidth"
 	public var displayWidth: XMLNode? {
-		get { params.attribute(forName: Self.displaywidth) }
-		set {
-			params.removeAttribute(forName: Self.displaywidth)
-			newValue?.name = Self.displaywidth
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.displaywidth, on: \.params) }
+		set { setNode(node: newValue, for: Self.displaywidth, on: \.params) }
 	}
 
 	static private let displayheight = "displayheight"
 	public var displayHeight: XMLNode? {
-		get { params.attribute(forName: Self.displayheight) }
-		set {
-			params.removeAttribute(forName: Self.displayheight)
-			newValue?.name = Self.displayheight
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.displayheight, on: \.params) }
+		set { setNode(node: newValue, for: Self.displayheight, on: \.params) }
 	}
 
 	static private let machinez = "machinez"
 	public var machineZ: XMLNode? {
-		get { params.attribute(forName: Self.machinez) }
-		set {
-			params.removeAttribute(forName: Self.machinez)
-			newValue?.name = Self.machinez
-			newValue.map {
-				params.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.machinez, on: \.params) }
+		set { setNode(node: newValue, for: Self.machinez, on: \.params) }
 	}
 
 	static private let attachlayer = "attachlayer"
 	public var attachLayer: XMLNode? {
-		get { projectionTime.attribute(forName: Self.attachlayer) }
-		set {
-			projectionTime.removeAttribute(forName: Self.attachlayer)
-			newValue?.name = Self.attachlayer
-			newValue.map {
-				projectionTime.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.attachlayer, on: \.projectionTime) }
+		set { setNode(node: newValue, for: Self.attachlayer, on: \.projectionTime) }
 	}
 
 	static private let buildinlayer = "buildinlayer"
 	public var buildInLayer: XMLNode? {
-		get { projectionTime.attribute(forName: Self.buildinlayer) }
-		set {
-			projectionTime.removeAttribute(forName: Self.buildinlayer)
-			newValue?.name = Self.buildinlayer
-			newValue.map {
-				projectionTime.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.buildinlayer, on: \.projectionTime) }
+		set { setNode(node: newValue, for: Self.buildinlayer, on: \.projectionTime) }
 	}
 
 	static private let attachtime = "attachtime"
 	public var attachTime: XMLNode? {
-		get { projectionTime.attribute(forName: Self.attachtime) }
-		set {
-			projectionTime.removeAttribute(forName: Self.attachtime)
-			newValue?.name = Self.attachtime
-			newValue.map {
-				projectionTime.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.attachtime, on: \.projectionTime) }
+		set { setNode(node: newValue, for: Self.attachtime, on: \.projectionTime) }
 	}
 
 	static private let basetime = "basetime"
 	public var baseTime: XMLNode? {
-		get { projectionTime.attribute(forName: Self.basetime) }
-		set {
-			projectionTime.removeAttribute(forName: Self.basetime)
-			newValue?.name = Self.basetime
-			newValue.map {
-				projectionTime.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.basetime, on: \.projectionTime) }
+		set { setNode(node: newValue, for: Self.basetime, on: \.projectionTime) }
 	}
 
 	static private let projectionAdjustX = "x"
 	public var projectionAdjustX: XMLNode? {
-		get { projectionAdjustment.attribute(forName: Self.projectionAdjustX) }
-		set {
-			projectionAdjustment.removeAttribute(forName: Self.projectionAdjustX)
-			newValue?.name = Self.projectionAdjustX
-			newValue.map {
-				projectionAdjustment.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.projectionAdjustX, on: \.projectionAdjustment) }
+		set { setNode(node: newValue, for: Self.projectionAdjustX, on: \.projectionAdjustment) }
+
 	}
 
 	static private let projectionAdjustY = "y"
 	public var projectionAdjustY: XMLNode? {
-		get { projectionAdjustment.attribute(forName: Self.projectionAdjustY) }
-		set {
-			projectionAdjustment.removeAttribute(forName: Self.projectionAdjustY)
-			newValue?.name = Self.projectionAdjustY
-			newValue.map {
-				projectionAdjustment.addAttribute($0)
-			}
-		}
+		get { getNode(for: Self.projectionAdjustY, on: \.projectionAdjustment) }
+		set { setNode(node: newValue, for: Self.projectionAdjustY, on: \.projectionAdjustment) }
 	}
 
 	public init(data: Data) throws {
@@ -188,6 +104,18 @@ public struct SVGXParsing {
 		self.params = try (xmlData.nodes(forXPath: "/svg[1]/printparams[1]").first as? XMLElement).unwrap()
 		self.projectionTime = try (xmlData.nodes(forXPath: "/svg[1]/printparams[1]/projectiontime[1]").first as? XMLElement).unwrap()
 		self.projectionAdjustment = try (xmlData.nodes(forXPath: "/svg[1]/printparams[1]/projectionadjust[1]").first as? XMLElement).unwrap()
+	}
+
+	private func getNode(for key: String, on keypath: KeyPath<SVGXParsing, XMLElement>) -> XMLNode? {
+		self[keyPath: keypath].attribute(forName: key)
+	}
+
+	private func setNode(node: XMLNode?, for key: String, on keypath: KeyPath<SVGXParsing, XMLElement>) {
+		self[keyPath: keypath].removeAttribute(forName: key)
+		node?.name = key
+		node.map {
+			self[keyPath: keypath].addAttribute($0)
+		}
 	}
 
 	private static func getSVGData(from data: Data) throws -> (previewAndHeader: Data, svgData:Data) {
