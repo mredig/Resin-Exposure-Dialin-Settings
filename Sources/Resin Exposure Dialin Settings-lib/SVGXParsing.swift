@@ -132,6 +132,15 @@ public struct SVGXParsing {
 
 		return (data[..<svgOffset], data[svgOffset...])
 	}
+
+	public func renderedData() -> Data {
+		let svgData = xmlData.xmlData
+
+		var header = previewAndHeaderData
+		header.append(contentsOf: svgData)
+
+		return header
+	}
 }
 
 extension SVGXParsing: CustomDebugStringConvertible, CustomStringConvertible {
